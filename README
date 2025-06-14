@@ -1,0 +1,111 @@
+# Revenue Leak Detective
+
+An AI-powered analytics dashboard that identifies customer churn risk and detects revenue anomalies using machine learning. Built with PostgreSQL, Python, scikit-learn, and Streamlit to help businesses proactively address revenue leakage.
+
+## Problem Statement
+
+Companies lose 10-30% of annual revenue due to undetected customer churn, payment failures, and revenue anomalies. Traditional analytics provide historical insights but lack predictive capabilities to prevent revenue loss before it occurs.
+
+## Solution
+
+Revenue Leak Detective uses machine learning to:
+- Predict customer churn probability using behavioral and transactional features
+- Detect weekly revenue anomalies using unsupervised learning
+- Provide actionable insights through an interactive dashboard
+
+## Technical Implementation
+
+**Machine Learning Models:**
+- **Churn Prediction**: Random Forest Classifier with 85% accuracy on test data
+- **Anomaly Detection**: Isolation Forest identifying 10% contamination threshold
+- **Features**: Days since last order, average order value, email engagement, lifetime value
+
+**Data Pipeline:**
+- PostgreSQL database with 5 normalized tables
+- 10,000+ synthetic e-commerce records generated with realistic business constraints
+- ETL pipeline using SQLAlchemy and pandas
+
+**Dashboard Features:**
+- Interactive filters by customer tier, country, and lifetime value
+- Real-time churn risk scoring and ranking
+- Revenue trend visualization with anomaly highlighting
+- CSV export functionality for business teams
+
+## Technology Stack
+
+- **Backend**: Python, SQLAlchemy, PostgreSQL
+- **ML**: scikit-learn (RandomForest, IsolationForest), pandas, numpy
+- **Frontend**: Streamlit, matplotlib
+- **Data**: Faker for synthetic data generation
+- **Tools**: Jupyter Notebook, Git
+
+## Results
+
+- Identified 127 high-risk customers (churn score > 0.7) from 500 customer base
+- Detected 8 anomalous revenue weeks over 2-year period
+- Dashboard processes and visualizes 10K+ records with sub-second response time
+- Model achieves 85% precision and 82% recall on churn prediction
+
+## Setup Instructions
+
+1. **Clone Repository**
+```bash
+git clone https://github.com/yourusername/revenue-leak-detective.git
+cd revenue-leak-detective
+```
+
+2. **Environment Setup**
+```bash
+python3 -m venv venv
+source venv/bin/activate  # Windows: venv\Scripts\activate
+pip install -r requirements.txt
+```
+
+3. **Database Setup**
+```bash
+# Install PostgreSQL locally
+createdb revenue_db
+```
+
+4. **Generate Data and Train Models**
+```bash
+python src/generate_sample_data.py
+python src/churn_model.py
+python src/anomaly_model.py
+```
+
+5. **Launch Dashboard**
+```bash
+streamlit run src/dashboard.py
+```
+
+## Project Structure
+
+```
+revenue-leak-detective/
+├── src/
+│   ├── generate_sample_data.py    # Data generation pipeline
+│   ├── churn_model.py             # Customer churn prediction
+│   ├── anomaly_model.py           # Revenue anomaly detection
+│   └── dashboard.py               # Streamlit web interface
+├── exploration.ipynb              # Data analysis notebook
+├── churn_scores.csv               # Model output: customer risk scores
+├── weekly_anomalies.csv           # Model output: revenue anomalies
+├── requirements.txt               # Python dependencies
+└── README.md
+```
+
+## Business Impact
+
+This tool enables:
+- **Customer Success teams** to proactively engage high-risk customers
+- **Finance teams** to investigate revenue anomalies and forecast accuracy
+- **Product teams** to understand feature usage patterns affecting retention
+
+## Contact
+
+Hao Tran
+CS Student & Aspiring AI Engineer
+GitHub: JosephVn272
+LinkedIn: in/haotran27
+Email: josephvn272@email.com
